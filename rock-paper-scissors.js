@@ -24,4 +24,28 @@ function getHumanChoice() {
     return getChoice(Math.min(Math.max(humanSelection, 0), 2));
 }
 
-console.log(getHumanChoice());
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice == computerChoice) {
+        console.log("Draw!");
+    }
+    else if ((humanChoice == "Rock" && computerChoice == "Paper")
+        || (humanChoice == "Paper" && computerChoice == "Scissors")
+        || (humanChoice == "Scissors" && computerChoice == "Rock"))
+    {
+        computerScore++;
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    }
+    else
+    {
+        humanScore++;
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    }
+}
+
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+
+playRound(humanChoice, computerChoice);
